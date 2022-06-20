@@ -1,10 +1,25 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import AppLayout from '@/layout/AppLayout.vue'
+import productRoutes from './modules/products'
+import orderRoutes from './modules/order'
+import permissionRoutes from './modules/permission'
+import mediaRoutes from './modules/media'
 
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    name: 'home',
-    component: () => import('../views/home/index.vue')
+    component: AppLayout,
+    children: [
+      {
+        path: '',
+        name: 'home',
+        component: () => import('../views/home/index.vue')
+      },
+      productRoutes,
+      permissionRoutes,
+      orderRoutes,
+      mediaRoutes
+    ]
   },
   {
     path: '/login',
