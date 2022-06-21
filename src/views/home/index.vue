@@ -1,11 +1,14 @@
 <template>
   <h1>HOME</h1>
-  <el-button>Home</el-button>
+  <el-button>
+    Home
+  </el-button>
 </template>
 
 <script setup lang='ts'>
-import { getLoginInfo } from '@/api/common'
-getLoginInfo()
+// import { getLoginInfo, logout } from '@/api/common'
+// import { store } from '@/store'
+// logout()
 
 </script>
 

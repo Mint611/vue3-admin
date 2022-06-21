@@ -1,23 +1,28 @@
 import { createStore, Store, useStore as baseUseStore } from 'vuex'
 import { InjectionKey } from 'vue'
+import { IUserInfo } from '@/api/types/common'
+import createPersistedState from 'vuex-persistedstate'
 
-export interface State {
-    count: number;
-    foo: string;
+const state = {
+  count: 1,
+  isCollapse: false,
+  user: null as ({ token: string } & IUserInfo) | null
 }
+
+export type State = typeof state
 
 export const key: InjectionKey<Store<State>> = Symbol('store')
 
 export const store = createStore<State>({
-  state () {
-    return {
-      count: 0,
-      foo: 'hello'
-    }
-  },
+  plugins: [createPersistedState()],
+  state,
   mutations: {
-    increment (state) {
-      state.count++
+    setIsCollapse (state, payload) {
+      state.isCollapse = payload
+    },
+
+    setUser (state, payload) {
+      state.user = payload
     }
   }
 })

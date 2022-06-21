@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-aside width="200px">
+    <el-aside>
       <AppMenu />
     </el-aside>
     <el-container>
@@ -31,6 +31,7 @@ import AppMenu from './components/AppMenu.vue'
 }
 
 .el-aside {
+  width: auto;
   background-color: #304156;
   color: #333;
 }
@@ -38,6 +39,11 @@ import AppMenu from './components/AppMenu.vue'
 .el-main {
   background-color: #E9EEF3;
   color: #333;
+}
+
+.el-menu:not(.el-menu--collapse) {
+  width: 200px;
+  min-height: 400px;
 }
 
 </style>
